@@ -12,7 +12,7 @@ def scrape_matches(html_file):
     file = open(html_file, 'r')
     soup = BeautifulSoup(file, 'html.parser')
     matches = soup.find_all('flo-spotlight')
-    records = []
+    records = list()
     for match in matches:
         record = dict()
         record['uuid'] = uuid.uuid1()
@@ -25,6 +25,7 @@ def scrape_matches(html_file):
     return records
 
 
+# TODO - Scraping should be done headlessly, instead of going full screen use video element coordinates for screenshot
 def scrape_image(matches):
     """Scrape image of match video."""
     base_url = 'https://www.flograppling.com'
@@ -85,7 +86,7 @@ def chunks(lst, n):
 
 
 if __name__ == '__main__':
-    matches = scrape_matches('brown_belts.html')
+    matches = scrape_matches('match_records/brown_belts.html')
     chunk_generator = chunks(matches, 50)
     for chunk in chunk_generator:
         scrape_image(chunk)

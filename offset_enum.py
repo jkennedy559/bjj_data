@@ -31,16 +31,16 @@ class OffsetValues(IntEnum):
     competitor_2_name_right_x = 590
 
     # Competitor 1 Points
-    competitor_1_points_upper_y = 1325
-    competitor_1_points_lower_y = 1385
-    competitor_1_points_left_x = 600
-    competitor_1_points_right_x = 680
+    competitor_1_points_upper_y = 1335
+    competitor_1_points_lower_y = 1370
+    competitor_1_points_left_x = 625
+    competitor_1_points_right_x = 660
 
     # Competitor 2 Points
-    competitor_2_points_upper_y = 1385
-    competitor_2_points_lower_y = 1440
-    competitor_2_points_left_x = 600
-    competitor_2_points_right_x = 680
+    competitor_2_points_upper_y = 1395
+    competitor_2_points_lower_y = 1428
+    competitor_2_points_left_x = 622
+    competitor_2_points_right_x = 663
 
     # Competitor 1 Advantages &/or Penalties
     competitor_1_ads_or_pens_upper_y = 1325

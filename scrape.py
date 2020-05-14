@@ -25,6 +25,25 @@ def scrape_matches(html_file):
     return records
 
 
+def scrape_registrations(html_file):
+    """Return list of dictionaries containing competitor registrations scraped from input html_file."""
+    file = open(html_file, 'r')
+    soup = BeautifulSoup(file, 'html.parser')
+
+    def table_rows_excluding_footer(tag):
+        return tag.name == 'tr' and not tag.td.has_attr('colspan')
+    competitor_records = soup.find_all(table_rows_excluding_footer)
+    records = list()
+    for competitor_record in competitor_records:
+        bracket_information = competitor_record.parent. parent.h4.text.split('/')
+        registration = dict(zip(['Belt', 'Age_group', 'Gender', 'Weight'], bracket_information))
+        competitor_information = competitor_record.find_all('td')
+        registration['Competitor'] = competitor_information[1].string.strip()
+        registration['Team'] = competitor_information[0].string.strip()
+        records.append(registration)
+    return records
+
+
 # TODO - Scraping should be done headlessly, instead of going full screen use video element coordinates for screenshot
 def scrape_image(matches):
     """Scrape image of match video."""
@@ -86,7 +105,7 @@ def chunks(lst, n):
 
 
 if __name__ == '__main__':
-    matches = scrape_matches('match_records/brown_belts.html')
+    matches = scrape_matches('html_files/brown_belts.html')
     chunk_generator = chunks(matches, 50)
     for chunk in chunk_generator:
         scrape_image(chunk)

@@ -44,7 +44,6 @@ def scrape_registrations(html_file):
     return records
 
 
-# TODO - Scraping should be done headlessly, instead of going full screen use video element coordinates for screenshot
 def scrape_image(matches):
     """Scrape image of match video."""
     base_url = 'https://www.flograppling.com'

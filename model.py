@@ -58,7 +58,7 @@ def train_model():
 
 
 def visualise(images, main_title=''):
-    """Visualise images on specified grid"""
+    """Visualise images on grid"""
     for i, image in enumerate(images):
         plt.suptitle(f'{main_title}', fontsize=14)
         plt.subplot(10, 10, i + 1)
